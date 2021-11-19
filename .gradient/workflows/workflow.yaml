@@ -44,8 +44,6 @@ jobs:
     outputs:
       model-id:
         type: string
-    needs:
-      - TrainModel
     uses: create-model@v1
     with:
       name: my-trained-model
