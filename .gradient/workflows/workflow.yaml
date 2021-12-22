@@ -7,8 +7,6 @@ defaults:
     instance-type: C4
 jobs:
   CloneRepo:
-    resources:
-      instance-type: C4
     outputs:
       repo:
         type: volume
