@@ -37,36 +37,36 @@ jobs:
         - "-c"
         - cd /inputs/repo && python mnist.py && cp -R /my-trained-model /outputs/trained-model
       image: "tensorflow/tensorflow:1.13.1-gpu-py3"
-    UploadModel:
-      needs:
-        - TrainModel
-      inputs:
-        model: TrainModel.outputs.trained-model
-      uses: container@v1
-      outputs:
-        model-id:
-          type: string
-      needs:
-        - TrainModel
-      uses: create-model@v1
-      with:
-        name: my-trained-model
-        type: Tensorflow #Tensorflow, ONNX, or Custom
-    DeployModel:
-      needs:
-        - UploadModel
-      uses: script@v1
-      with:
-        script: |
-          cat > ./deployment.yaml <<EOF
-          image: lucone83/streamlit-nginx
-          port: 8080
-          env:
-            - name: ENV
-              value: VAR
-          resources:
-            replicas: 1
-            instanceType: C4
-          EOF
-          gradient deployments update --id "8e0c0ddf-ffa5-413b-be55-2b8872cd9486" --spec ./deployment.yaml
-        image: paperspace/gradient-sdk
+#     UploadModel:
+#       needs:
+#         - TrainModel
+#       inputs:
+#         model: TrainModel.outputs.trained-model
+#       uses: container@v1
+#       outputs:
+#         model-id:
+#           type: string
+#       needs:
+#         - TrainModel
+#       uses: create-model@v1
+#       with:
+#         name: my-trained-model
+#         type: Tensorflow #Tensorflow, ONNX, or Custom
+#     DeployModel:
+#       needs:
+#         - UploadModel
+#       uses: script@v1
+#       with:
+#         script: |
+#           cat > ./deployment.yaml <<EOF
+#           image: lucone83/streamlit-nginx
+#           port: 8080
+#           env:
+#             - name: ENV
+#               value: VAR
+#           resources:
+#             replicas: 1
+#             instanceType: C4
+#           EOF
+#           gradient deployments update --id "8e0c0ddf-ffa5-413b-be55-2b8872cd9486" --spec ./deployment.yaml
+#         image: paperspace/gradient-sdk
