@@ -2,7 +2,9 @@ on:
   github:
     branches:
       only: main
-
+defaults:
+  resources:
+    instance-type: C4
 jobs:
   CloneRepo:
     resources:
