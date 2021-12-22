@@ -4,7 +4,7 @@ on:
       only: main
 
 jobs:
-  cloneRepo:
+  CloneRepo:
     resources:
       instance-type: C4
     outputs:
