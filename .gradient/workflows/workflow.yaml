@@ -42,7 +42,6 @@ jobs:
       - TrainModel
     inputs:
       model: TrainModel.outputs.trained-model
-    uses: container@v1
     outputs:
       model-id:
         type: string
