@@ -4,7 +4,7 @@ on:
       only: main
 defaults:
   resources:
-    instance-type: C4
+    instance-type: C5
 jobs:
   CloneRepo:
     outputs:
