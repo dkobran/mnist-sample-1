@@ -17,8 +17,8 @@ jobs:
   TrainModel:
     env:
       PS_MODEL_PATH: /my-trained-model
-      max_steps: "350"
-      train_epochs: "350"
+      max_steps: "400"
+      train_epochs: "400"
     resources:
       instance-type: P4000
     needs:
